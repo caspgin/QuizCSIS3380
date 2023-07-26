@@ -7,10 +7,16 @@ const app = express();
 
 app.get("/",async (req,res)=>{
     const result = await enterData();
-    res.json({ 
-        "msg": "Successfully added name Abidali",
-        "data": result
-    });
+    result.then(()=>{
+        res.json({ 
+            "msg": "Successfully added name Abidali",
+            "data": result
+        });
+    }).catch((err)=>{
+        console.log(err);
+        res.status(400).send(err);
+    })
+    
 })
 
 app.listen(port, ()=>{
