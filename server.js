@@ -6,16 +6,18 @@ const app = express();
 
 
 app.get("/",async (req,res)=>{
-    const result = await enterData();
-    result.then(()=>{
+    try{
+        let result = await enterData();
+        console.log(result);
         res.json({ 
             "msg": "Successfully added name Abidali",
             "data": result
         });
-    }).catch((err)=>{
+    }catch(err){
         console.log(err);
-        res.status(400).send(err);
-    })
+        res.send(err);
+    }
+    
     
 })
 
