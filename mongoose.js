@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const uri = process.env.LOCAL_URI;
+console.log(uri)
 function enterData(){
     return new Promise((resolve,reject)=>{
         mongoose.connect(uri, { useNewUrlParser: true,  useUnifiedTopology: true   }
