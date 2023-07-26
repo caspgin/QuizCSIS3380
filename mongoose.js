@@ -1,5 +1,17 @@
 const mongoose = require('mongoose');
 
+const Schema = mongoose.Schema;
+    
+// Create a Schema object
+const todoSchema = new Schema({
+name: { type: String, required: true },
+sid: { type: String, required: true },
+});
+
+const Quiz = mongoose.model("Examrecord", todoSchema);
+
+
+
 const uri = process.env.LOCAL_URI;
 console.log(uri)
 function enterData(){
@@ -11,16 +23,6 @@ function enterData(){
         console.log("MongoDB database connection established successfully");
         })
         
-        const Schema = mongoose.Schema;
-    
-        // Create a Schema object
-        const todoSchema = new Schema({
-        name: { type: String, required: true },
-        sid: { type: String, required: true },
-        });
-    
-        const Quiz = mongoose.model("Examrecord", todoSchema);
-    
         const abi = new Quiz({
             "name":"Abidali Sarangwala",
             "sid":"300347885"
