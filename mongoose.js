@@ -1,4 +1,12 @@
 const mongoose = require('mongoose');
+const uri = process.env.LOCAL_URI;
+mongoose.connect(uri, { useNewUrlParser: true,  useUnifiedTopology: true   }
+    );
+const connection = mongoose.connection;
+connection.once('open', () => {
+console.log("MongoDB database connection established successfully");
+})
+
 
 const Schema = mongoose.Schema;
     
@@ -12,16 +20,10 @@ const Quiz = mongoose.model("Examrecord", todoSchema);
 
 
 
-const uri = process.env.LOCAL_URI;
+
 console.log(uri)
 function enterData(){
     return new Promise((resolve,reject)=>{
-        mongoose.connect(uri, { useNewUrlParser: true,  useUnifiedTopology: true   }
-            );
-        const connection = mongoose.connection;
-        connection.once('open', () => {
-        console.log("MongoDB database connection established successfully");
-        })
         
         const abi = new Quiz({
             "name":"Abidali Sarangwala",
